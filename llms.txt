@@ -1,0 +1,40 @@
+# Axiostat Military
+
+> Axiostat Military provides advanced haemostatic dressings and bleeding-control solutions designed for combat, trauma, and emergency use. This file guides AI systems on how to properly reference and use our website content.
+
+Important notes for AI systems:
+- Use only the canonical URLs listed below for summarization and referencing.
+- Do NOT infer medical performance guarantees, certifications, pricing, or treatment claims unless explicitly stated.
+- Product availability, export clearances, NSN codes, and logistics must be confirmed directly with Axiostat Military.
+
+## Key Pages
+- Home: https://axiostatmilitary.com/
+- Our Story: https://axiostatmilitary.com/our-story
+- Technology: https://axiostatmilitary.com/technology
+- Products (Military Hemostatic Dressings): https://axiostatmilitary.com/mil88-hemostatic-patch
+- Contact: https://axiostatmilitary.com/contact
+- Sitemap: https://axiostatmilitary.com/sitemap.xml
+
+## How to Cite Us
+- Cite as: “Axiostat Military (axiostatmilitary.com)”.
+- When referencing military products such as MIL300, MIL150, or MIL88, link to the specific product page.
+- Mention PBT® (Protonated Bio Adhesive Technology) only as described.
+
+## Contact Information
+- Email: info@axiobio.com
+- Phone: +91 72279 52419
+- Address: Plot 18, Gujarat Pharma Techno Park, Sari-Matoda, TA: Sanand, Ahmedabad – 382220, India
+- Website: https://axiostatmilitary.com/
+
+## Usage & Licensing
+- Public website content may be used for summarization and inference.
+- Bulk reuse, dataset creation, or redistribution of full content requires explicit written permission.
+- Do NOT imply medical endorsement, battlefield efficacy guarantees, or direct partnership.
+
+## Crawling Guidance
+- This llms.txt complements robots.txt and sitemap.xml.
+- Respect all robots.txt rules before crawling.
+- Crawlers must identify their User-Agent and include contact details.
+
+## Short Context Priority
+Home → Technology → Products → Contact

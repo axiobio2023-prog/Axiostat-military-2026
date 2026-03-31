@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: 
+Disallow: /cgi-bin/
+Disallow: https://axiostatmilitary.com/blog/chitosan-vs-kaolin-vs-gelatin-vs-fibrin-choose-whats-best-for-you
+Disallow: https://axiostatmilitary.com/blog/the-role-of-hemostatic-dressings-in-disaster-relief-and-emergency-medicine
+Disallow: https://axiostatmilitary.com/blog/chitosan-hemostatic-dressing-in-trauma-how-it-saves-lives
+Disallow: https://axiostatmilitary.com/blog/hemostatic-dressings-which-one-should-you-use
+Disallow: https://axiostatmilitary.com/blog/next-gen-hemostat-how-axiostat-is-transforming-emergency-and-trauma-care-from-battlefield-to-surgical-operating-room
+Disallow: https://axiostatmilitary.com/blog/military-medicine-how-hemostatic-dressings-are-saving-soldiers-on-the-battlefield
+Sitemap: https://axiostatmilitary.com/sitemap.xml

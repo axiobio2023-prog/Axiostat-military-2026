@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Only redirect if the URL is exactly /blog (no trailing slash or anything after)
+RewriteCond %{REQUEST_URI} ^/blog/?$
+RewriteRule ^.*$ https://axiostatmilitary.com/blogs [R=301,L]
