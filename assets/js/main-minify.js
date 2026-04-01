@@ -13,8 +13,8 @@ $(document).ready(function () {
     animateIn: 'animate__zoomIn',
     nav: !0,
     navText: [
-      "<img src='assets/graphics/icon/carousel_arrow.svg'>",
-      "<img src='assets/graphics/icon/carousel_arrow.svg'>"
+      "<img src='/assets/graphics/icon/carousel_arrow.svg'>",
+      "<img src='/assets/graphics/icon/carousel_arrow.svg'>"
     ],
     margin: 10,
     items: 1,
@@ -44,8 +44,8 @@ $(document).ready(function () {
     dots: !1,
     nav: !0,
     navText: [
-      "<img src='assets/graphics/icon/carousel_arrow.svg'>",
-      "<img src='assets/graphics/icon/carousel_arrow.svg'>"
+      "<img src='/assets/graphics/icon/carousel_arrow.svg'>",
+      "<img src='/assets/graphics/icon/carousel_arrow.svg'>"
     ],
     autoplay: !0,
     autoplayTimeout: 5000,
@@ -65,8 +65,8 @@ $(document).ready(function () {
     dots: !1,
     nav: !0,
     navText: [
-      "<img src='assets/graphics/icon/carousel_arrow.svg'>",
-      "<img src='assets/graphics/icon/carousel_arrow.svg'>"
+      "<img src='/assets/graphics/icon/carousel_arrow.svg'>",
+      "<img src='/assets/graphics/icon/carousel_arrow.svg'>"
     ],
     autoplay: !1,
     autoplayTimeout: 5000,
@@ -104,8 +104,8 @@ $(document).ready(function () {
     mouseDrag: !1,
     nav: !0,
     navText: [
-      "<img src='assets/graphics/icon/carousel_arrow.svg'>",
-      "<img src='assets/graphics/icon/carousel_arrow.svg'>"
+      "<img src='/assets/graphics/icon/carousel_arrow.svg'>",
+      "<img src='/assets/graphics/icon/carousel_arrow.svg'>"
     ],
     margin: 10,
     items: 1,
