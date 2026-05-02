@@ -40,4 +40,4 @@ const template = fs.readFileSync('blogs.template.html', 'utf8')
 const output = template.replace(`<div class="row" id="blogSet">`, `<div class="row" id="blogSet">\n${blogCards}`)
 
 fs.writeFileSync('blogs.html', output)
-console.log(`✅ ${result.length} blogs injected into blogs.html`)
+console.log(`✅ ${result.length} blogs are  injected into blogs.html`)
