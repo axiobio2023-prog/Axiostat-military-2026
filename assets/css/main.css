@@ -1531,3 +1531,8 @@ background-color: var(--brown_1);
 .dropdown-submenu.show > .dropdown-menu {
   display: block;
 }
+
+/* Location dropdown — hidden (re-enable by removing this rule) */
+.nav-item.dropdown.location {
+  display: none !important;
+}
