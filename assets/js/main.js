@@ -130,6 +130,27 @@ $(".carousel_events").owlCarousel(
 
 
 
+$(".carousel_video_onfield").owlCarousel(
+{
+  loop:true,
+  rewind:true,
+  margin:0,
+  dots:false,
+  nav:true,
+  navText: [
+    "<i class=\"fa-solid fa-chevron-left\" aria-hidden=\"true\"></i>",
+    "<i class=\"fa-solid fa-chevron-right\" aria-hidden=\"true\"></i>",
+  ],
+  autoplay:false,
+  items:1,
+  responsive:{
+      0:{ items:1 },
+      769:{ items:1 },
+      991:{ items:1 }
+  }
+});
+
+
 $(".carousel_award").owlCarousel(
 {
   loop:true,
@@ -180,9 +201,6 @@ $(".carousel_step").owlCarousel(
   smartSpeed: 1000,
   dots:false
 });
-
-
-
 
 
 

@@ -707,6 +707,39 @@
               <button type="submit" class="axi-submit">Submit Request</button>
             </div>
           </form>
+
+          <div class="trainer-pack-carousel-wrap">
+            <div class="owl-carousel carousel_trainer_pack">
+              <div class="item">
+                <img
+                  src="assets/images/carousel/trainer-pack-1.jpg"
+                  alt="Axiostat Z-Fold Trainer Pack training demonstration"
+                  loading="lazy"
+                />
+              </div>
+              <div class="item">
+                <img
+                  src="assets/images/carousel/trainer-pack-2.jpg"
+                  alt="Axiostat Z-Fold Trainer Pack in use during simulation training"
+                  loading="lazy"
+                />
+              </div>
+              <div class="item">
+                <img
+                  src="assets/images/carousel/trainer-pack-3.jpg"
+                  alt="Axiostat Z-Fold Trainer Pack product training session"
+                  loading="lazy"
+                />
+              </div>
+              <div class="item">
+                <img
+                  src="assets/images/carousel/trainer-pack-4.jpg"
+                  alt="Axiostat Z-Fold Trainer Pack hands-on bleeding control practice"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -862,6 +895,47 @@
 
       	margin-top: 5rem;
 
+      }
+
+      .trainer-pack-carousel-wrap {
+        margin: 1.5rem 0 0;
+      }
+
+      .trainer-pack-carousel-wrap .carousel_trainer_pack .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        border: 2px solid #ad8f6c;
+        border-radius: 10px;
+        min-height: 285px;
+        padding: 9px;
+        box-sizing: border-box;
+      }
+
+      .trainer-pack-carousel-wrap .carousel_trainer_pack .item img {
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 315px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .trainer-pack-carousel-wrap .owl-nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .trainer-pack-carousel-wrap .owl-nav img {
+        width: 32px;
+      }
+
+      .trainer-pack-carousel-wrap .owl-nav .owl-prev img {
+        transform: scale(-1);
       }
 
 
@@ -1165,6 +1239,22 @@
 
     <script>
       $(document).ready(function () {
+        $('.carousel_trainer_pack').owlCarousel({
+          nav: true,
+          navText: [
+            "<img src='assets/graphics/icon/carousel_arrow.svg' alt=''>",
+            "<img src='assets/graphics/icon/carousel_arrow.svg' alt=''>",
+          ],
+          margin: 10,
+          items: 1,
+          loop: true,
+          autoplay: true,
+          autoplayTimeout: 5000,
+          autoplayHoverPause: true,
+          smartSpeed: 800,
+          dots: false,
+        })
+
         var x = document.getElementById('toast')
         x.className = 'show'
         setTimeout(function () {
