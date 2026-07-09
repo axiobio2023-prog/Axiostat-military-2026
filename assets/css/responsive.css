@@ -41,12 +41,27 @@
 @media (max-width: 768px) 
 {
 
-/* home table overflow fix */
+/* home table — mobile: keep desktop layout, scroll horizontally, hide scrollbar */
+  .home_table_scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100%;
+  }
 
+  .home_table_scroll::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
 
-.home-table{
-    width: 500px !important;
-}
+  .home-table {
+    width: 100% !important;
+    min-width: 860px;
+    table-layout: auto;
+  }
 
 /* island menu scroll  */
 .island_menu {
@@ -156,6 +171,8 @@
 	{
 	    max-width: 100%;
 	    max-height: 100%;
+	    width: 100%;
+	    height: auto;
 	}
 	.blogs .section2 .blog_wrap img,
 	.blogs .section2 .blog_wrap

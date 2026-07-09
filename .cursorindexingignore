@@ -1,0 +1,56 @@
+# .cursorindexingignore
+
+# --------------------------
+# Dependency Lockfiles
+# (Massive token sinks to index, but sometimes useful to @ reference for version checks)
+# --------------------------
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+composer.lock
+
+# --------------------------
+# Large Data & Seed Files
+# (Prevents Cursor from memorizing thousands of rows of mock data)
+# --------------------------
+*.jsonl
+*-data.json
+mock-data/
+seeds/
+*.csv
+*.tsv
+
+# --------------------------
+# Documentation & Changelogs
+# (Usually not needed for coding context, but good to keep accessible)
+# --------------------------
+CHANGELOG.md
+README-*.md
+docs/
+
+# --------------------------
+# Large Legacy / Third-Party Scripts
+# (Stops Cursor from studying massive jQuery plugins, but lets you ask about them if they break)
+# --------------------------
+*jquery*.js
+*bootstrap*.js
+vendor/
+third-party/
+libs/
+
+# --------------------------
+# Massive Test Suites or Snapshots
+# (You usually only care about tests when you are actively fixing one)
+# --------------------------
+__snapshots__/
+*.test.ts
+*.spec.ts
+*.test.js
+*.spec.js
+
+# --------------------------
+# WordPress Specific
+# (If you occasionally need to inspect core files, but don't want them polluting your index)
+# --------------------------
+wp-config-sample.php
+wp-content/plugins/**/assets/
