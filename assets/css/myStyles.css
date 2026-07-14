@@ -618,16 +618,20 @@ white-space: nowrap;
 .onfield-video-carousel {
   width: 100%;
   position: relative;
+  --onfield-video-height: 420px;
 }
 
 .onfield-video-carousel .carousel_video_onfield .item {
   width: 100%;
+  min-height: var(--onfield-video-height);
 }
 
 .onfield-video-carousel .onfield-video {
   display: block;
   width: 100%;
-  max-height: 420px;
+  height: var(--onfield-video-height);
+  min-height: var(--onfield-video-height);
+  max-height: var(--onfield-video-height);
   background: #000;
   object-fit: contain;
 }
@@ -635,6 +639,7 @@ white-space: nowrap;
 .onfield-video-carousel .owl-stage-outer {
   overflow: hidden;
   border-radius: 16px;
+  min-height: var(--onfield-video-height);
 }
 
 .onfield-video-carousel .owl-nav {
@@ -680,8 +685,8 @@ white-space: nowrap;
 }
 
 @media only screen and (max-width: 768px) {
-  .onfield-video-carousel .onfield-video {
-    max-height: 260px;
+  .onfield-video-carousel {
+    --onfield-video-height: 260px;
   }
 
   .onfield-video-carousel .owl-nav button {
