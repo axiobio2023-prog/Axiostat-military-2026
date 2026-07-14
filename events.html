@@ -311,6 +311,11 @@
       </section>
 
       <section class="section2 section2-head">
+        <div class="container text-center">
+          <h2 class="color1 title mb-4 text-uppercase b_700 fst-italic">Upcoming events will be announced here.</h2>
+        </div>
+
+        <!-- Static upcoming events (uncomment to restore)
         <div class="container" id="upcomming2">
           <h2 class="color1 title mb-4 text-uppercase b_700 fst-italic">Upcoming Events</h2>
           <div class="row">
@@ -345,6 +350,7 @@
             </div>
           </div>
         </div>
+        End static upcoming events -->
       </section>
 
       <section class="section4 section_top_footer">
@@ -757,7 +763,9 @@
       referrerpolicy="no-referrer"
     ></script>
 
+    <!-- Sanity events fetch: remove the block comment below to restore dynamic event listing -->
     <script>
+      /*
       const projectId = 'qt1vz71d'
       const dataset = 'production'
 
@@ -787,12 +795,9 @@
           row.setAttribute('class', 'row')
 
           events.result.forEach((element) => {
-            // console.log(element);
             const endDate = new Date(element.enddate)
             const currentDate = new Date()
             if (currentDate < endDate) {
-              // console.log(`${endDate.getDate()}-${endDate.getMonth() + 1}-${endDate.getFullYear()}`)
-              // console.log("--------------------------------------");
               upcomming.push(element)
             }
 
@@ -854,7 +859,6 @@
             row.setAttribute('class', 'row')
 
             upcomming.forEach((element) => {
-              // console.log(element);
               let img = document.createElement('img')
               img.setAttribute('class', 'w-100 mb-3')
               let image_name = element.mainImage.asset._ref.split('-')
@@ -917,6 +921,7 @@
       }
 
       arrangeEvents()
+      */
     </script>
 
     <script>
