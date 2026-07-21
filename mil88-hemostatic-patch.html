@@ -75,18 +75,18 @@
     <!-- main css -->
     <link
       rel="stylesheet"
-      href="assets/css/main-minify.css?v=order-table-scroll1"
+      href="assets/css/main-minify.css?v=hero-logo-center"
       type="text/css"
     />
     <!-- main css -->
     <link
       rel="stylesheet"
-      href="assets/css/responsive-minify.css?v=home-table-mobile4"
+      href="assets/css/responsive-minify.css?v=hero-logo-center"
       type="text/css"
     />
     <link
       rel="stylesheet"
-      href="assets/css/myStyles-minify.css?v=home-youtube2"
+      href="assets/css/myStyles-minify.css?v=hero-logo-center"
       type="text/css"
     />
     <!-- FontAwesome -->
@@ -279,14 +279,6 @@
                       >Home</a
                     >
                   </li>
-                  <li class="nav-item story">
-                    <a class="nav-link b_600 fst-italic" href="our-story.html"
-                      >Our Story</a
-                    >
-                  </li>
-                  <!-- <li class="nav-item products">
-                    <a class="nav-link b_600 fst-italic" href="products.html">Products</a>
-                  </li> -->
                   <li class="nav-item dropdown resources">
                     <a
                       class="nav-link dropdown-toggle b_600 fst-italic"
@@ -325,6 +317,14 @@
                         >
                       </li>
                     </ul>
+                  </li>
+                  <!-- <li class="nav-item products">
+                    <a class="nav-link b_600 fst-italic" href="products.html">Products</a>
+                  </li> -->
+                  <li class="nav-item story">
+                    <a class="nav-link b_600 fst-italic" href="our-story.html"
+                      >Our Story</a
+                    >
                   </li>
                   <li class="nav-item technology">
                     <a class="nav-link b_600 fst-italic" href="technology.html"
@@ -672,6 +672,11 @@
                       </li>
                     </ul>
                   </li>
+                  <li class="nav-item language-nav">
+                    <div class="language-select-wrap">
+                      <div id="google_translate_element"></div>
+                    </div>
+                  </li>
                   <li class="nav-item contact">
                     <a class="nav-link btn_primary" href="contact.html"
                       >Contact Us</a
@@ -679,8 +684,6 @@
                   </li>
                 </ul>
               </div>
-
-              <div id="google_translate_element"></div>
             </div>
           </nav>
           <!-- End Navbar -->
@@ -691,26 +694,30 @@
     <!-- End header -->
 
     <main class="products">
-      <section class="section1 text-center position-relative pb-0">
-        <p class="text-white opacity-50 b_400 m-0">
-          Designed for soldiers in battlefields
-        </p>
-        <img
-          src="assets/graphics/axio_plane_logo.svg"
-          class="plane_logo"
-          alt="Axiostat MIL88 (Patch) hemostatic dressing for rapid bleeding control in field conditions"
-        />
+      <section class="section1 product-hero text-center position-relative pb-0">
+        <div class="hero-brand-intro">
+          <p class="hero-battlefield-badge m-0">
+            Designed for soldiers in battlefields
+          </p>
+          <img
+            src="assets/graphics/axio_plane_logo.svg"
+            class="plane_logo"
+            alt="Axiostat MIL88 (Patch) hemostatic dressing for rapid bleeding control in field conditions"
+          />
+        </div>
         <h1 class="title text-uppercase b_700 fst-italic lh-1 text-white m-0">
-          MIL88
+          Patch
         </h1>
-        <img
-          src="assets/graphics/home_carousel/MIL88_NSN.png"
-          class="img_product animate__zoomIn animate__animated mt-2"
-          alt="Axiostat MIL88 (Patch) hemostatic dressing for rapid bleeding control in field conditions"
-        />
-        <p class="text-white b_400 mb-3 position-relative">
-          Bleeding Control Solutions, Combat Proven Technology
-        </p>
+        <div class="hero-product-stack">
+          <img
+            src="assets/graphics/home_carousel/MIL88_NSN.png"
+            class="img_product animate__zoomIn animate__animated mt-2"
+            alt="Axiostat MIL88 (Patch) hemostatic dressing for rapid bleeding control in field conditions"
+          />
+          <p class="hero_tagline fst-italic mb-3 position-relative">
+            Bleeding Control Solutions, Combat Proven Technology
+          </p>
+        </div>
         <div class="hemostatic">
           Advanced Haemostatic Gauze<br />
           USFDA Cleared, 510(k) K202830 <br />
@@ -791,7 +798,7 @@
                   class="sem_img"
                   alt="Axiostat 100% Chitosan Dressing for rapid blood clotting in trauma and surgical applications"
                 />
-                <p class="text-center m-0 pt-3">100% Chitosan Dressing</p>
+                <p class="product-feature-title">100% Chitosan Dressing</p>
               </div>
             </div>
             <div
@@ -948,7 +955,10 @@
                     alt=""
                   />
                   <h2>Axiostat Gauze - Z-Fold</h2>
-                  <p>MIL300 | 7.6x300cm & MIL150 | 7.6x150cm</p>
+                  <div class="product-size-tags">
+                    <span class="product-size-tag">MIL300 | 7.6x300cm</span>
+                    <span class="product-size-tag">MIL150 | 7.6x150cm</span>
+                  </div>
                   <a href="index.html"
                     ><button class="btn_secondary mx-0 mx-sm-1">
                       Know More
@@ -965,7 +975,9 @@
                     alt=""
                   />
                   <h2>Axiostat Rolled Gauze</h2>
-                  <p>L150 | 7.6x150cm</p>
+                  <div class="product-size-tags">
+                    <span class="product-size-tag">L150 | 7.6x150cm</span>
+                  </div>
                   <a href="l150-rolled-hemostatic-gauze.html"
                     ><button class="btn_secondary mx-0 mx-sm-1">
                       Know More
@@ -982,7 +994,10 @@
                     alt=""
                   />
                   <h2>Axiostat Patch</h2>
-                  <p>MIL88 & L88 | 8x8cm</p>
+                  <div class="product-size-tags">
+                    <span class="product-size-tag">MIL88 | 8x8cm</span>
+                    <span class="product-size-tag">L88 | 8x8cm</span>
+                  </div>
                   <a href="mil88-hemostatic-patch.html"
                     ><button class="btn_secondary mx-0 mx-sm-1">
                       Know More
@@ -1017,7 +1032,7 @@
           <div class="m-scroll">
             <div class="m-scroll__title">
               <div>
-                <h2>HOW TO USE AXIOSTAT PATCH</h2>
+                <h2>AXIOSTAT PATCH</h2>
               </div>
             </div>
           </div>
@@ -1175,7 +1190,6 @@
               </div>
               <h3
                 class="color1 title mb-4 text-uppercase b_700 fst-italic text-center"
-                style="margin-top: 50px"
               >
                 Testimonials
               </h3>
@@ -1233,6 +1247,61 @@
                   </div>
                 </div>
               </div>
+              
+          <h3 class="color1 title mb-4 text-uppercase b_700 fst-italic text-center">Latest blogs</h3>
+          <div class="content1 home-blog-featured-wrap">
+            <div class="row g-4 justify-content-center">
+              <div class="col-md-4">
+                <article class="home-blog-card">
+                  <div class="home-blog-card__visual">
+                    <img src="assets/graphics/blogs/home-featured/hemostatic-gauze-for-military-bleeding-control.png" width="800" height="450" loading="lazy" alt="Why choose Z-fold hemostatic gauze for military bleeding control" />
+                    <button type="button" class="home-blog-card__video-trigger" data-bs-toggle="modal" data-bs-target="#homeBlogVideoModal" data-youtube-id="Z4C_LP7l_L8" data-youtube-start="4" aria-label="Play video: Z-fold hemostatic gauze for military bleeding control">
+                      <span class="home-blog-card__play-icon"><i class="fa-solid fa-circle-play" aria-hidden="true"></i></span>
+                    </button>
+                  </div>
+                  <a class="home-blog-card__link" href="https://axiostatmilitary.com/blog/hemostatic-gauze-for-military-bleeding-control/">
+                    <div class="home-blog-card__body">
+                      <h5 class="home-blog-card__title">Why choose a Z-fold hemostatic gauze for military bleeding control?</h5>
+                      <span class="btn_secondary home-blog-card__cta">Know More</span>
+                    </div>
+                  </a>
+                </article>
+              </div>
+              <div class="col-md-4">
+                <article class="home-blog-card">
+                  <div class="home-blog-card__visual">
+                    <img src="assets/graphics/blogs/home-featured/patch-mil88-a-trusted-bleeding-control-patch.png" width="800" height="450" loading="lazy" alt="Why Axiostat MIL88 patch is trusted for bleeding control" />
+                    <button type="button" class="home-blog-card__video-trigger" data-bs-toggle="modal" data-bs-target="#homeBlogVideoModal" data-youtube-id="M0WiR8h873s" data-youtube-start="2" aria-label="Play video: Axiostat Patch MIL88 bleeding control">
+                      <span class="home-blog-card__play-icon"><i class="fa-solid fa-circle-play" aria-hidden="true"></i></span>
+                    </button>
+                  </div>
+                  <a class="home-blog-card__link" href="https://axiostatmilitary.com/blog/patch-mil88-a-trusted-bleeding-control-patch/">
+                    <div class="home-blog-card__body">
+                      <h5 class="home-blog-card__title">Why is Axiostat Patch (MIL88) a trusted bleeding control patch for military use?</h5>
+                      <span class="btn_secondary home-blog-card__cta">Know More</span>
+                    </div>
+                  </a>
+                </article>
+              </div>
+              <div class="col-md-4">
+                <article class="home-blog-card">
+                  <div class="home-blog-card__visual">
+                    <img src="assets/graphics/blogs/home-featured/z-fold-hemostatic-gauze-effective-in-combat-care.png" width="800" height="450" loading="lazy" alt="What makes Z-fold hemostatic gauze effective in combat care" />
+                    <button type="button" class="home-blog-card__video-trigger" data-bs-toggle="modal" data-bs-target="#homeBlogVideoModal" data-youtube-id="yMHTbsmlE9E" data-youtube-start="1" aria-label="Play video: Z-fold hemostatic gauze in combat care">
+                      <span class="home-blog-card__play-icon"><i class="fa-solid fa-circle-play" aria-hidden="true"></i></span>
+                    </button>
+                  </div>
+                  <a class="home-blog-card__link" href="https://axiostatmilitary.com/blog/z-fold-hemostatic-gauze-effective-in-combat-care/">
+                    <div class="home-blog-card__body">
+                      <h5 class="home-blog-card__title">What makes Z-fold hemostatic gauze effective in combat care?</h5>
+                      <span class="btn_secondary home-blog-card__cta">Know More</span>
+                    </div>
+                  </a>
+                </article>
+              </div>
+            </div>
+          </div>
+
               <div class="content1 p-3 p-lg-5 mt-5">
                 <div class="row">
                   <div class="col-md-7 text-white d-flex align-items-center">
@@ -1659,7 +1728,24 @@
     </div>
   </div> -->
 
-    <div id="toast3">
+    
+    <div class="modal fade" id="homeBlogVideoModal" tabindex="-1" aria-labelledby="homeBlogVideoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark border-secondary">
+          <div class="modal-header border-secondary border-0 pb-0">
+            <h6 class="modal-title text-white b_600" id="homeBlogVideoModalLabel">Video</h6>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-2 pt-0">
+            <div class="ratio ratio-16x9">
+              <iframe id="homeBlogVideoIframe" title="YouTube video player" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div id="toast3">
       <div id="desc">
         For Urgent Supplies Call at +91 7227952419 <br /><span
           class="b_600 color1"
@@ -1934,7 +2020,7 @@
     <!-- owl -->
     <script src="assets/plugins/owl/owl.carousel.min.js"></script>
     <!-- main file -->
-    <script src="assets/js/main-minify.js?v=onfield-video-loop2" type="text/javascript"></script>
+    <script src="assets/js/main-minify.js?v=language-nav5" type="text/javascript"></script>
     <!-- FontAwesome -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/all.min.js"
@@ -2114,5 +2200,26 @@
           });
       });
     </script>
-  </body>
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var videoModalEl = document.getElementById("homeBlogVideoModal");
+        var iframe = document.getElementById("homeBlogVideoIframe");
+        if (!videoModalEl || !iframe) return;
+
+        videoModalEl.addEventListener("show.bs.modal", function (event) {
+          var trigger = event.relatedTarget;
+          if (!trigger || !trigger.getAttribute("data-youtube-id")) return;
+          var id = trigger.getAttribute("data-youtube-id");
+          var start = trigger.getAttribute("data-youtube-start") || "0";
+          iframe.src = "https://www.youtube.com/embed/" + id + "?autoplay=1&rel=0&modestbranding=1&start=" + encodeURIComponent(start);
+        });
+
+        videoModalEl.addEventListener("hidden.bs.modal", function () {
+          iframe.src = "";
+          iframe.removeAttribute("src");
+        });
+      });
+    </script>
+</body>
 </html>

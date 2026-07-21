@@ -1,13 +1,13 @@
 
 :root{
---heading-font: 'Montserrat', Arial, sans-serif;
---sub-font: 'Poppins', Arial, sans-serif;
---btn-font: 'Poppins', Arial, sans-serif;
+--heading-font: 'Kanit', sans-serif;
+--sub-font: 'Kanit', sans-serif;
+--btn-font: 'Kanit', sans-serif;
 }
 
 /* trainer section */
 .trainer-section {
---bg-url: url('../../assets/images/Newsletter Input.webp');
+--bg-url: url('../trainer-pack-background.svg');
 background-image: var(--bg-url);
 background-position: center;
 background-size: cover;
@@ -266,7 +266,7 @@ font-size: 16px;
 line-height: 1.6;
 font-weight: 400;
 }
-.axi-left b { display:block; margin-top:8px; color:#30302B; font-family: 'Montserrat', Arial, sans-serif; }
+.axi-left b { display:block; margin-top:8px; color:#30302B; font-family: 'Kanit', sans-serif; }
 
 /* right panel (form) */
 .axi-right {
@@ -397,7 +397,7 @@ border-radius: 10px !important;
 .axi-select::placeholder {
 color: #A5A5A6;
 opacity: 1; /* ensure consistent color across browsers */
-font-family: 'Poppins', sans-serif;
+font-family: 'Kanit', sans-serif;
 font-style:italic;
 }
 
@@ -415,7 +415,7 @@ font-size: 13px;
 color: #A07D53;
 background: #E6DACC99;
 font-weight: 600;
-font-family: 'Poppins', Arial, sans-serif;
+font-family: 'Kanit', sans-serif;
 border: 1px solid #AD8F6C;
 padding: 4px 12px;
 font-style: italic;
