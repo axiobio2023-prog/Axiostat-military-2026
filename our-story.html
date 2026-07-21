@@ -39,10 +39,10 @@
     <!-- animate css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- main css -->
-    <link rel="stylesheet" href="assets/css/main-minify.css?v=award-marquee3" type="text/css" />
+    <link rel="stylesheet" href="assets/css/main-minify.css?v=our-story-gallery6" type="text/css" />
     <!-- main css -->
     <link rel="stylesheet" href="assets/css/responsive-minify.css" type="text/css" />
-    <link rel="stylesheet" href="assets/css/myStyles-minify.css?v=home-youtube2" type="text/css" />
+    <link rel="stylesheet" href="assets/css/myStyles-minify.css?v=our-story-youtube1" type="text/css" />
     <!-- FontAwesome -->
     <link
       rel="stylesheet"
@@ -155,12 +155,6 @@
                   <li class="nav-item home">
                     <a class="nav-link b_600 fst-italic" href="index.html">Home</a>
                   </li>
-                  <li class="nav-item story">
-                    <a class="nav-link active b_600 fst-italic" href="our-story.html">Our Story</a>
-                  </li>
-                  <!-- <li class="nav-item products">
-                    <a class="nav-link b_600 fst-italic" href="products.html">Products</a>
-                  </li> -->
                   <li class="nav-item dropdown resources">
                     <a
                       class="nav-link dropdown-toggle b_600 fst-italic"
@@ -179,6 +173,12 @@
                       <li><a class="dropdown-item b_600 fst-italic" href="mil88-hemostatic-patch.html">Hemostatic Patch</a></li>
                       <li><a class="dropdown-item b_600 fst-italic" href="Trainer-pack.html">Trainer Pack</a></li>
                     </ul>
+                  </li>
+                  <!-- <li class="nav-item products">
+                    <a class="nav-link b_600 fst-italic" href="products.html">Products</a>
+                  </li> -->
+                  <li class="nav-item story">
+                    <a class="nav-link active b_600 fst-italic" href="our-story.html">Our Story</a>
                   </li>
                   <li class="nav-item technology">
                     <a class="nav-link b_600 fst-italic" href="technology.html">Technology</a>
@@ -299,12 +299,16 @@
                       </li>
                     </ul>
                   </li>
+                  <li class="nav-item language-nav">
+                    <div class="language-select-wrap">
+                      <div id="google_translate_element"></div>
+                    </div>
+                  </li>
                   <li class="nav-item contact">
                     <a class="nav-link btn_primary" href="contact.html">Contact Us</a>
                   </li>
                 </ul>
               </div>
-              <div id="google_translate_element"></div>
             </div>
           </nav>
           <!-- End Navbar -->
@@ -385,7 +389,11 @@
 
       <section class="section4">
         <div class="container">
-          <div class="row">
+          <div class="our-story-gallery-wrap">
+            <div class="our-story-gallery-header">
+              <h2 class="our-story-gallery-title color1 title mb-0 text-uppercase b_700 fst-italic">Gallery</h2>
+              <a href="gallery.html" class="our-story-gallery-view-more b_600 fst-italic">View more</a>
+            </div>
             <div class="owl-carousel carousel_latest our-story-gallery">
               <div class="latest_wrap">
                 <img
@@ -543,10 +551,35 @@
           <h2 class="color1 title mb-4 text-uppercase b_700 fst-italic">Our Technology</h2>
           <div class="row">
             <div class="col-md-6">
-              <video width="100%" controls>
-                <source src="assets/graphics/video1.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              <div class="home-section-youtube">
+                <div class="home-section-youtube__frame ratio ratio-16x9">
+                  <iframe
+                    id="ourStoryTechnologyYoutube"
+                    title="Axiostat Our Technology video"
+                    src="https://www.youtube.com/embed/zhDIpLvF6cU?autoplay=1&mute=1&enablejsapi=1&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=zhDIpLvF6cU"
+                    allow="
+                      accelerometer;
+                      autoplay;
+                      clipboard-write;
+                      encrypted-media;
+                      gyroscope;
+                      picture-in-picture;
+                      web-share;
+                    "
+                    allowfullscreen
+                  ></iframe>
+                </div>
+                <button
+                  type="button"
+                  class="home-section-youtube__toggle btn_secondary"
+                  id="ourStoryTechnologyYoutubeToggle"
+                  aria-label="Pause video"
+                  aria-pressed="true"
+                >
+                  <i class="fa-solid fa-pause" aria-hidden="true"></i>
+                  <span>Pause</span>
+                </button>
+              </div>
             </div>
             <div class="col-md-6 d-flex align-items-center">
               <div class="px-0 px-lg-5">
@@ -1196,7 +1229,7 @@
     <!-- owl -->
     <script src="assets/plugins/owl/owl.carousel.min.js"></script>
     <!-- main file -->
-    <script src="assets/js/main-minify.js?v=onfield-video-loop2" type="text/javascript"></script>
+    <script src="assets/js/main-minify.js?v=language-nav5" type="text/javascript"></script>
     <!-- FontAwesome -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/all.min.js"
@@ -1365,6 +1398,48 @@
           var clone = group.cloneNode(true);
           clone.setAttribute("aria-hidden", "true");
           track.appendChild(clone);
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var iframe = document.getElementById("ourStoryTechnologyYoutube");
+        var toggleBtn = document.getElementById("ourStoryTechnologyYoutubeToggle");
+        if (!iframe || !toggleBtn) return;
+
+        var isPlaying = true;
+        var icon = toggleBtn.querySelector("i");
+        var label = toggleBtn.querySelector("span");
+
+        function postYoutubeCommand(func) {
+          iframe.contentWindow.postMessage(
+            JSON.stringify({ event: "command", func: func, args: "" }),
+            "*",
+          );
+        }
+
+        toggleBtn.addEventListener("click", function () {
+          if (isPlaying) {
+            postYoutubeCommand("pauseVideo");
+            isPlaying = false;
+            toggleBtn.setAttribute("aria-label", "Play video");
+            toggleBtn.setAttribute("aria-pressed", "false");
+            if (icon) {
+              icon.classList.remove("fa-pause");
+              icon.classList.add("fa-play");
+            }
+            if (label) label.textContent = "Play";
+          } else {
+            postYoutubeCommand("playVideo");
+            isPlaying = true;
+            toggleBtn.setAttribute("aria-label", "Pause video");
+            toggleBtn.setAttribute("aria-pressed", "true");
+            if (icon) {
+              icon.classList.remove("fa-play");
+              icon.classList.add("fa-pause");
+            }
+            if (label) label.textContent = "Pause";
+          }
         });
       });
     </script>

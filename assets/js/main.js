@@ -209,10 +209,31 @@ $(".carousel_step").owlCarousel(
 
 });
 
- 
+$(document).ready(function () {
+  if (document.querySelector('.whatsapp-float')) return;
 
+  var float = document.createElement('div');
+  float.className = 'whatsapp-float';
+  float.innerHTML =
+    '<div class="whatsapp-ring">' +
+    '<a href="https://wa.me/917227952419" target="_blank" rel="noopener noreferrer">' +
+    '<img src="/assets/graphics/icon/floater-whatsapp.svg" alt="Contact us on WhatsApp">' +
+    '</a></div>';
+  document.body.appendChild(float);
+});
 
+function enhanceGoogleTranslateWidget() {
+  var select = document.querySelector('.goog-te-combo');
+  if (select && select.dataset.enhanced !== '1') {
+    select.dataset.enhanced = '1';
+    select.setAttribute('aria-label', 'Select language');
+  }
 
+  document.querySelectorAll('.goog-te-gadget-simple .VIpgJd-ZVi9od-xl07Ob-lTBxed').forEach(function (el) {
+    el.style.setProperty('color', '#fff', 'important');
+    el.style.setProperty('-webkit-text-fill-color', '#fff', 'important');
+  });
+}
 
-
+setInterval(enhanceGoogleTranslateWidget, 300);
 
