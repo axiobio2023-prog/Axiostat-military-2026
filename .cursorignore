@@ -1,0 +1,42 @@
+# .cursorignore
+
+# --------------------------
+# Node.js, TS & Fastify
+# --------------------------
+node_modules/
+dist/
+build/
+out/
+coverage/
+.cache/
+.nyc_output/
+*.tsbuildinfo
+
+# --------------------------
+# WordPress & Legacy Web
+# --------------------------
+wp-admin/
+wp-includes/
+wp-content/uploads/
+# (Optional) Ignore external plugins if you only want it reading your custom code
+wp-content/plugins/ 
+vendor/
+
+# --------------------------
+# Minified & Generated Assets
+# --------------------------
+*.min.js
+*.min.css
+*.map
+*.bundle.js
+
+# --------------------------
+# Data, Logs & Environment
+# --------------------------
+*.sql
+*.sqlite
+*.log
+*.csv
+.env
+.env.local
+.git/

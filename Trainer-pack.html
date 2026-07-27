@@ -41,7 +41,7 @@
     <!-- animate css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- main css -->
-    <link rel="stylesheet" href="assets/css/main-minify.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/main-minify.css?v=round-text-svg1" type="text/css" />
     <!-- main css -->
     <link rel="stylesheet" href="assets/css/responsive-minify.css" type="text/css" />
     <link rel="stylesheet" href="assets/css/myStyles-minify.css" type="text/css" />
@@ -137,13 +137,7 @@
       }
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-
-    <script type="application/ld+json">
+<script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Emergency",
@@ -247,12 +241,6 @@
                   <li class="nav-item home">
                     <a class="nav-link active b_600 fst-italic" href="index.html">Home</a>
                   </li>
-                  <li class="nav-item story">
-                    <a class="nav-link b_600 fst-italic" href="our-story.html">Our Story</a>
-                  </li>
-                  <!-- <li class="nav-item products">
-                    <a class="nav-link b_600 fst-italic" href="products.html">Products</a>
-                  </li> -->
                   <li class="nav-item dropdown resources">
                     <a
                       class="nav-link dropdown-toggle b_600 fst-italic"
@@ -271,6 +259,12 @@
                       <li><a class="dropdown-item b_600 fst-italic" href="mil88-hemostatic-patch.html">Hemostatic Patch</a></li>
                       <li><a class="dropdown-item b_600 fst-italic" href="Trainer-pack.html">Trainer Pack</a></li>
                     </ul>
+                  </li>
+                  <!-- <li class="nav-item products">
+                    <a class="nav-link b_600 fst-italic" href="products.html">Products</a>
+                  </li> -->
+                  <li class="nav-item story">
+                    <a class="nav-link b_600 fst-italic" href="our-story.html">Our Story</a>
                   </li>
                   <li class="nav-item technology">
                     <a class="nav-link b_600 fst-italic" href="technology.html">Technology</a>
@@ -421,13 +415,16 @@
                       </li>
                     </ul>
                   </li>
+                  <li class="nav-item language-nav">
+                    <div class="language-select-wrap">
+                      <div id="google_translate_element"></div>
+                    </div>
+                  </li>
                   <li class="nav-item contact">
                     <a class="nav-link btn_primary" href="contact.html">Contact Us</a>
                   </li>
                 </ul>
               </div>
-
-              <div id="google_translate_element"></div>
             </div>
           </nav>
           <!-- End Navbar -->
@@ -445,12 +442,15 @@
         <div class="axi-left" aria-hidden="false">
           <h1 class="title display-6 text-uppercase b_700 fst-italic color1">Axiostat Z-Fold Trainer Pack</h1>
           <div class="axi-images-wrapper">
-            <div class="axi-images" aria-hidden="false">
-              <img src="./assets/images/MIL Trainer Pack Front 1.png" alt="Axiostat Trainer Pack - front" />
-              <img src="./assets/images/MIL Trainer Pack Front 2.png" alt="Axiostat Trainer Pack - back" />
-            </div>
-
             <span class="axi-note">Not for medical use</span>
+            <div class="owl-carousel carousel_trainer_showcase axi-showcase-carousel" aria-hidden="false">
+              <div class="item">
+                <img src="./assets/images/axiostat_trainer_pack_front_image.png" alt="Axiostat Trainer Pack - front" />
+              </div>
+              <div class="item">
+                <img src="./assets/images/axiostat_trainer_pack_back_image.png" alt="Axiostat Trainer Pack - back" />
+              </div>
+            </div>
           </div>
 
           <p id="axi-product-desc">
@@ -864,6 +864,48 @@
 
       }
 
+      .axi-showcase-carousel,
+      .carousel_trainer_showcase {
+        background: #fff;
+        border: 2px solid #cdbda6;
+        border-radius: 15px;
+        padding-bottom: 12px;
+      }
+
+      .carousel_trainer_showcase .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 300px;
+        padding: 36px 12px 10px;
+        box-sizing: border-box;
+      }
+
+      .carousel_trainer_showcase.owl-carousel .owl-item img,
+      .carousel_trainer_showcase .item img {
+        width: auto !important;
+        max-width: 280px !important;
+        height: auto !important;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .carousel_trainer_showcase .owl-nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 6px;
+      }
+
+      .carousel_trainer_showcase .owl-nav img {
+        width: 32px;
+      }
+
+      .carousel_trainer_showcase .owl-nav .owl-prev img {
+        transform: scale(-1);
+      }
+
 
 
           #toast3 {
@@ -1154,7 +1196,7 @@
     <!-- owl -->
     <script src="assets/plugins/owl/owl.carousel.min.js"></script>
     <!-- main file -->
-    <script src="assets/js/main-minify.js" type="text/javascript"></script>
+    <script src="assets/js/main-minify.js?v=language-nav5" type="text/javascript"></script>
     <!-- FontAwesome -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/js/all.min.js"
@@ -1165,6 +1207,22 @@
 
     <script>
       $(document).ready(function () {
+        $('.carousel_trainer_showcase').owlCarousel({
+          nav: true,
+          navText: [
+            "<img src='assets/graphics/icon/carousel_arrow.svg' alt=''>",
+            "<img src='assets/graphics/icon/carousel_arrow.svg' alt=''>",
+          ],
+          margin: 10,
+          items: 1,
+          loop: true,
+          autoplay: true,
+          autoplayTimeout: 5000,
+          autoplayHoverPause: true,
+          smartSpeed: 800,
+          dots: false,
+        })
+
         var x = document.getElementById('toast')
         x.className = 'show'
         setTimeout(function () {
