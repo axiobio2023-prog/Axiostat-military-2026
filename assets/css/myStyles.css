@@ -489,7 +489,7 @@ white-space: nowrap;
 .products .section1.home-hero .plane_logo,
 .products .section1.product-hero .plane_logo {
   display: block;
-  width: 360px;
+  width: 280px;
   max-width: calc(100% - 2rem);
   margin-left: auto;
   margin-right: auto;
@@ -498,19 +498,26 @@ white-space: nowrap;
 
 .products .section1.home-hero h1.title,
 .products .section1.product-hero h1.title {
-  font-size: 130px;
+  font-size: 105px;
+  line-height: 0.85;
   margin-top: 0.35rem !important;
-  margin-bottom: 0.15rem !important;
+  margin-bottom: 0 !important;
+  padding: 0;
+}
+
+.products .section1.home-hero h1.title {
+  margin-bottom: 0 !important;
 }
 
 .products .section1.home-hero .hero-product-stack {
-  margin-top: 0.15rem;
+  margin-top: 0;
 }
 
 .products .section1.home-hero .hero-product-stack .img_product {
-  margin-top: 0.65rem;
-  width: min(420px, 88vw);
-  max-height: 340px;
+  margin-top: -104px;
+  filter: drop-shadow(0px -4px 15px black);
+  width: 450px;
+  max-width: calc(100% - 2rem);
   height: auto;
   object-fit: contain;
 }
@@ -529,12 +536,16 @@ white-space: nowrap;
   padding: 0 1rem;
 }
 
+.products .section1.home-hero .hero_tagline {
+  margin-top: 0.35rem;
+}
+
 .products .section1.home-hero .hero-variants-bar {
   display: flex;
   align-items: stretch;
   max-width: 760px;
   width: calc(100% - 2rem);
-  margin: 1.15rem auto 0.9rem;
+  margin: 50px auto 0;
   background: rgba(0, 0, 0, 0.62);
   border-radius: 14px;
   overflow: hidden;
@@ -600,8 +611,36 @@ white-space: nowrap;
   line-height: 1.4;
 }
 
-.products .section1.home-hero .hero-certification {
-  margin-bottom: 1rem;
+.products .section1.home-hero .hero-certification,
+.products .section1.product-hero .hemostatic {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.products .section1.product-hero .hemostatic {
+  line-height: 1.45;
+}
+
+.products .section1.home-hero .island_menu1.hero-cta-buttons,
+.products .section1.product-hero .island_menu1.hero-cta-buttons {
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.products .section1.home-hero .island_menu1.hero-cta-buttons .btn_primary1,
+.products .section1.product-hero .island_menu1.hero-cta-buttons .btn_primary1 {
+  padding: 14px 28px !important;
+  font-size: 20px;
+  margin: 0 !important;
+}
+
+.products .section1.home-hero .island_menu1.hero-cta-buttons .btn_primary1.order_btn,
+.products .section1.product-hero .island_menu1.hero-cta-buttons .btn_primary1.order_btn {
+  padding: 14px 48px !important;
 }
 
 .products .section1.home-hero .hero-certification__title,
@@ -633,7 +672,7 @@ white-space: nowrap;
 
   .products .section1.home-hero .plane_logo,
   .products .section1.product-hero .plane_logo {
-    width: min(300px, 52vw);
+    width: min(233px, 52vw);
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0;
@@ -641,7 +680,13 @@ white-space: nowrap;
 
   .products .section1.home-hero h1.title,
   .products .section1.product-hero h1.title {
-    font-size: 96px;
+    font-size: 78px;
+  }
+
+  .products .section1.home-hero .hero-product-stack .img_product {
+    margin-top: -72px;
+    width: min(380px, 88vw);
+    height: auto;
   }
 
   .products .section1.home-hero .hero-variants-bar {
@@ -681,9 +726,21 @@ white-space: nowrap;
     padding-top: 118px;
   }
 
+  .products .section1.home-hero,
+  .products .section1.product-hero {
+    padding-bottom: 3rem;
+  }
+
+  .products .section1.home-hero .island_menu1.hero-cta-buttons,
+  .products .section1.product-hero .island_menu1.hero-cta-buttons {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1.5rem;
+  }
+
   .products .section1.home-hero .plane_logo,
   .products .section1.product-hero .plane_logo {
-    width: min(260px, 78vw);
+    width: min(202px, 78vw);
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0;
@@ -691,13 +748,13 @@ white-space: nowrap;
 
   .products .section1.home-hero h1.title,
   .products .section1.product-hero h1.title {
-    font-size: 57px;
+    font-size: 46px;
   }
 
   .products .section1.home-hero .hero-product-stack .img_product {
-    margin-top: 0.35rem;
-    width: min(320px, 92vw);
-    max-height: 240px;
+    margin-top: -32px;
+    width: min(300px, 92vw);
+    height: auto;
   }
 
   .products .section1.home-hero .hero_tagline,
@@ -712,7 +769,7 @@ white-space: nowrap;
   .products .section1.home-hero .hero-variants-bar {
     flex-direction: column;
     width: calc(100% - 1.25rem);
-    margin-top: 0.85rem;
+    margin-top: 50px;
     padding: 0.65rem;
     gap: 0.55rem;
   }
@@ -753,8 +810,11 @@ white-space: nowrap;
     font-size: 0.95rem;
   }
 
-  .products .section1.home-hero .pattern6 {
-    margin-top: -20px;
+  .products .section1.home-hero .pattern6,
+  .products .section1.product-hero .pattern6 {
+    margin-top: 0;
+    position: relative;
+    z-index: 1;
   }
 }
 
