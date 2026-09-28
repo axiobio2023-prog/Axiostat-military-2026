@@ -9,7 +9,7 @@
     { "source": "/request-brochure/", "destination": "/api/brochure-form" },
     {
       "source": "/axiobio41/:path*",
-      "destination": "/api/zoho-form-proxy/axiobio41/:path*"
+      "destination": "/api/zoho-form-proxy?zfpath=/axiobio41/:path*"
     }
   ]
 }
