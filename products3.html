@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <!-- main css -->
   <link rel="stylesheet" href="assets/css/main-minify.css?v=round-text-svg1" type="text/css" />
-    <link rel="stylesheet" href="/assets/css/myStyles-minify.css?v=latest-blogs1" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/myStyles-minify.css?v=brochure-form2" type="text/css" />
   <!-- main css -->
   <link rel="stylesheet" href="assets/css/responsive-minify.css" type="text/css" />
   <!-- FontAwesome -->
@@ -181,7 +181,7 @@
         </div>
         <div class="w-100 text-center mt-4">
           <button class="btn_size m-2">Available Sizes <span>8cm x 8cm</span></button>
-          <button data-bs-toggle="modal" data-bs-target="#modal_enquiry" class="btn_secondary m-2">Download Brochure
+          <button data-bs-toggle="modal" data-bs-target="#modal_enquiry" class="btn_secondary m-2">Request Brochure
             <img src="assets/graphics/icon/download.svg" alt="Axiostat 100% Chitosan Dressing for rapid blood clotting in trauma and surgical applications"> </button>
         </div>
       </div>
@@ -264,7 +264,7 @@
           </div>
           <div class="island_menu1">
             <a href="#section5"><button class="btn_primary1 order_btn mx-0 mx-sm-1">Order Information</button></a>
-            <a><button data-bs-toggle="modal" data-bs-target="#modal_enquiry" class="btn_primary1 mx-0 mx-sm-1">Download Brochure <img src="assets/graphics/dowload-icon.svg" /></button>
+            <a><button data-bs-toggle="modal" data-bs-target="#modal_enquiry" class="btn_primary1 mx-0 mx-sm-1">Request Brochure <img src="assets/graphics/dowload-icon.svg" /></button>
             </a>
           </div>
         </div>
@@ -529,32 +529,77 @@
 
   <!-- modal -->
   <div class="modal fade" id="modal_enquiry" tabindex="-1" aria-labelledby="modal_enquiryLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered brochure-modal-dialog">
       <div class="modal-content">
         <div class="modal-header border-0">
-          <h6 class="modal-title b_600 px-2 px-md-3" id="modal_enquiryLabel">Please fill the form we will connect you
-            asap.</h6>
+          <h6 class="modal-title b_600 px-2 px-md-3" id="modal_enquiryLabel">Request Brochure</h6>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body p-4 pt-3">
-          <form id="enquiryForm" data-netlify="true">
-            <div class="form-floating mb-3">
-              <input type="hidden" class="form-control" id="txt_product" placeholder="Product Name Name" name="product" value="L88">
-              <input type="text" class="form-control" id="txt_name" placeholder="Your Name" name="name" required>
-              <label>Your Name</label>
+        <div class="modal-body brochure-modal-body">
+          <div class="brochure-zoho-frame">
+              <iframe id="ziframe_272904" title="Request Brochure" aria-label="Request Brochure" frameborder="0" style="height:500px;width:99%;border:none;" src="/request-brochure"></iframe>
             </div>
-            <div class="form-floating mb-3">
-              <input type="number" class="form-control" id="txt_phone" placeholder="Phone" name="phone" required>
-              <label>Phone</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="txt_email" placeholder="Email Address" name="email" required>
-              <label>Email Address</label>
-            </div>
-            <div class="w-100 text-end">
-              <button class="btn_secondary" type="submit">Submit</button>
-            </div>
-          </form>
+            <script type="text/javascript">
+            (function() {
+              try {
+                var zf_frame = document.getElementById("ziframe_272904");
+                var ifrmSrc = zf_frame.src;
+
+                    if (!((new RegExp("[?&]referrername=")).test(ifrmSrc))) {
+                        var rfr = window.location.href;
+
+                        try {
+                            rfr = window.self !== window.top ?
+                                window.top.location.href :
+                                (/^https?:\/\/[\w.-]+\.[a-zA-Z]{2,}/i.test(rfr) ? rfr : "");
+                        } catch (e) {}
+
+                        if (rfr && rfr !== "") {
+                            if (rfr.length > 1800) {
+                                var queryIndex = rfr.indexOf('?');
+                                if (queryIndex > -1) {
+                                    rfr = rfr.substring(0, queryIndex);
+                                }
+                                if (rfr.length > 1800) {
+                                    rfr = rfr.substring(0, 1800);
+                                }
+                            }
+                            ifrmSrc += ((ifrmSrc.indexOf('?') > 0) ? '&' : '?') + 'referrername=' + encodeURIComponent(rfr);
+                        }
+                    }
+                    if (zf_frame.src !== ifrmSrc) {
+                        zf_frame.src = ifrmSrc;
+                    }
+              } catch (e) {}
+            })();
+
+            window.addEventListener("message", function (event) {
+              if (event.origin !== window.location.origin) return;
+              var data = event.data;
+              if (!data || data.type !== "axiostat-brochure-height") return;
+              var h = parseInt(data.height, 10);
+              if (!h || h < 200 || h > 1600) return;
+              var frame = document.getElementById("ziframe_272904");
+              if (frame) frame.style.setProperty("height", (h + 8) + "px", "important");
+            });
+            var brochureFrame = document.getElementById("ziframe_272904");
+            if (brochureFrame) {
+              var brochureFormReady = false;
+              brochureFrame.addEventListener("load", function () {
+                try {
+                  var loc = brochureFrame.contentWindow.location;
+                  if (/request-brochure-thanks/i.test(loc.pathname)) return;
+                  if (/thankyou/i.test(loc.pathname)) {
+                    brochureFrame.src = "/request-brochure-thanks" + loc.search;
+                    return;
+                  }
+                  brochureFormReady = true;
+                } catch (err) {
+                  if (brochureFormReady) brochureFrame.src = "/request-brochure-thanks";
+                }
+              });
+            }
+            </script>
         </div>
       </div>
     </div>
@@ -887,47 +932,8 @@
     });
 
   </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Select the form by its ID
-      const form = document.getElementById('enquiryForm');
 
-      form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent the default form submission behavior
-
-        // Basic validation example
-        const name = document.getElementById('txt_name').value;
-        const phone = document.getElementById('txt_phone').value;
-        const email = document.getElementById('txt_email').value;
-
-        if (!name || !phone || !email) {
-          alert('Please fill in all fields.');
-          return;
-        }
-
-        // Construct form data to send
-        const formData = new FormData(form);
-
-        // Submit the form data using fetch to Netlify
-        fetch("/", {
-          method: "POST",
-          body: formData
-        })
-          .then(response => {
-            if (response.ok) {
-              form.reset();
-              window.location.replace("./success.html");
-            } else {
-              alert('There was a problem with your submission. Please try again.');
-            }
-          })
-          .catch(error => console.error('Error:', error));
-      });
-    });
-  </script>
-
-
-    <script>
+<script>
       document.addEventListener("DOMContentLoaded", function () {
         var videoModalEl = document.getElementById("homeBlogVideoModal");
         var iframe = document.getElementById("homeBlogVideoIframe");

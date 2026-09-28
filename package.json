@@ -1,5 +1,9 @@
 {
   "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "vercel:dev": "npx vercel dev"
+  },
   "dependencies": {
     "node-fetch": "^3.3.2"
   }

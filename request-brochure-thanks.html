@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Request Brochure</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,500;0,600;1,600&display=swap" />
+  <style>
+    html, body {
+      margin: 0;
+      background: #fff;
+      color: #222;
+      font-family: "Kanit", sans-serif;
+    }
+    .thanks {
+      box-sizing: border-box;
+      padding: 36px 24px 28px;
+      text-align: center;
+    }
+    .mark {
+      width: 74px;
+      height: 74px;
+      margin: 0 auto 18px;
+      display: block;
+    }
+    p {
+      margin: 0 0 22px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+    a.again {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #ad8f6c;
+      color: #fff;
+      text-decoration: none;
+      border: 2px solid #ad8f6c;
+      border-radius: 6px;
+      font-weight: 600;
+      font-style: italic;
+      font-size: 17px;
+      line-height: 1;
+      padding: 12px 22px;
+    }
+    a.again:hover {
+      background: #9c7e5d;
+      border-color: #9c7e5d;
+    }
+    a.again svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+  <div class="thanks">
+    <svg class="mark" viewBox="0 0 74 74" aria-hidden="true">
+      <circle cx="37" cy="37" r="28" fill="none" stroke="#ad8f6c" stroke-width="2.5" stroke-dasharray="6 5" />
+      <circle cx="37" cy="37" r="20" fill="none" stroke="#243040" stroke-width="2" />
+      <path d="M28 38.2 34.2 44.2 47 30.5" fill="none" stroke="#243040" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <p>Thank you! Your response has been submitted.</p>
+    <a class="again" id="again" href="/request-brochure">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M7 1.5h2v5h5v2H9v5H7V8.5H2v-2h5z"/></svg>
+      Add another response
+    </a>
+  </div>
+  <script>
+    (function () {
+      var again = document.getElementById("again");
+      if (location.search) again.search = location.search;
+      function sendHeight() {
+        var el = document.querySelector(".thanks");
+        var h = Math.ceil(el.getBoundingClientRect().height);
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ type: "axiostat-brochure-height", height: h }, window.location.origin);
+        }
+      }
+      window.addEventListener("load", sendHeight);
+      window.addEventListener("resize", sendHeight);
+    })();
+  </script>
+</body>
+</html>
