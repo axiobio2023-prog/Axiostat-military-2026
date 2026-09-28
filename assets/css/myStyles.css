@@ -968,6 +968,11 @@ white-space: nowrap;
   object-fit: contain;
 }
 
+.onfield-video-carousel iframe.onfield-video {
+  border: 0;
+  object-fit: unset;
+}
+
 .onfield-video-carousel .owl-stage-outer {
   overflow: hidden;
   border-radius: 16px;

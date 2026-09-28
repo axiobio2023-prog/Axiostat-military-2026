@@ -1158,21 +1158,13 @@
                     <div class="onfield-video-carousel w-100">
                       <div class="owl-carousel carousel_video_onfield">
                         <div class="item">
-                          <video
-                            width="100%"
-                            controls
-                            class="mb-3 mb-lg-0 rounded-4 onfield-video"
-                            autoplay
-                            muted
-                            loop
-                            playsinline
-                          >
-                            <source
-                              src="assets/graphics/Landscape_MW_shoulder.mp4"
-                              type="video/mp4"
-                            />
-                            Your browser does not support the video tag.
-                          </video>
+                          <iframe
+                            class="mb-3 mb-lg-0 rounded-4 onfield-video onfield-youtube"
+                            src="https://www.youtube.com/embed/GfKZd1CSvRI?autoplay=1&mute=1&enablejsapi=1&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=GfKZd1CSvRI"
+                            title="Axiostat on-field usage"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                          ></iframe>
                         </div>
                         <div class="item">
                           <video
@@ -2129,22 +2121,40 @@
         var carouselEl = document.querySelector(".carousel_video_onfield");
         if (!carouselEl || typeof jQuery === "undefined") return;
 
-        function playActiveOnfieldVideo() {
-          carouselEl
-            .querySelectorAll(".onfield-video")
-            .forEach(function (video) {
-              video.pause();
-              if (!video.closest(".owl-item.active")) {
-                video.currentTime = 0;
-              }
-            });
-
-          var activeVideo = carouselEl.querySelector(
-            ".owl-item.active .onfield-video",
+        function postOnfieldYoutubeCommand(iframe, func) {
+          if (!iframe || !iframe.contentWindow) return;
+          iframe.contentWindow.postMessage(
+            JSON.stringify({ event: "command", func: func, args: "" }),
+            "*",
           );
+        }
+
+        function playActiveOnfieldVideo() {
+          carouselEl.querySelectorAll("video.onfield-video").forEach(function (video) {
+            video.pause();
+            if (!video.closest(".owl-item.active")) {
+              video.currentTime = 0;
+            }
+          });
+
+          carouselEl.querySelectorAll("iframe.onfield-youtube").forEach(function (iframe) {
+            if (!iframe.closest(".owl-item.active")) {
+              postOnfieldYoutubeCommand(iframe, "pauseVideo");
+            }
+          });
+
+          var activeItem = carouselEl.querySelector(".owl-item.active");
+          if (!activeItem) return;
+
+          var activeVideo = activeItem.querySelector("video.onfield-video");
           if (activeVideo) {
             activeVideo.loop = true;
             activeVideo.play().catch(function () {});
+          }
+
+          var activeYoutube = activeItem.querySelector("iframe.onfield-youtube");
+          if (activeYoutube) {
+            postOnfieldYoutubeCommand(activeYoutube, "playVideo");
           }
         }
 
