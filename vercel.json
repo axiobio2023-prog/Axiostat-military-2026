@@ -2,5 +2,14 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "node build.mjs",
   "outputDirectory": ".",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/request-brochure", "destination": "/api/brochure-form" },
+    { "source": "/request-brochure/", "destination": "/api/brochure-form" },
+    {
+      "source": "/axiobio41/:path*",
+      "destination": "/api/zoho-form-proxy/axiobio41/:path*"
+    }
+  ]
 }

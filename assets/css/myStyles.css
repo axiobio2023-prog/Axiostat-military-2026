@@ -1114,3 +1114,103 @@ white-space: nowrap;
   }
 }
 
+/* Request Brochure — Zoho iframe inside the download modal */
+#modal_enquiry .brochure-modal-dialog {
+  width: calc(100% - 1.5rem);
+  max-width: 760px;
+  max-height: calc(100vh - 1.5rem);
+  margin: 0.75rem auto;
+}
+
+#modal_enquiry .modal-content {
+  border: 0;
+  border-radius: 18px;
+  background: #fff;
+  max-height: calc(100vh - 1.5rem);
+  overflow: auto;
+}
+
+#modal_enquiry .modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  border: 0;
+  padding: 0.55rem 0.55rem 0;
+  margin-bottom: -2.4rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+#modal_enquiry .modal-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#modal_enquiry .btn-close {
+  pointer-events: auto;
+  width: 1.15rem;
+  height: 1.15rem;
+  padding: 0.7rem;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+}
+
+#modal_enquiry .brochure-modal-body {
+  padding: 0 !important;
+}
+
+#modal_enquiry .brochure-zoho-frame {
+  width: 100%;
+  line-height: 0;
+}
+
+#modal_enquiry .brochure-zoho-frame iframe {
+  display: block;
+  width: 100% !important;
+  max-width: 100%;
+  height: 520px !important;
+  border: 0 !important;
+  background: #fff;
+}
+
+@media (max-width: 991.98px) {
+  #modal_enquiry .brochure-modal-dialog {
+    width: calc(100% - 1.25rem);
+    max-width: 700px;
+  }
+
+  #modal_enquiry .brochure-zoho-frame iframe {
+    height: 560px !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  #modal_enquiry .brochure-modal-dialog {
+    width: calc(100% - 0.75rem);
+    max-width: none;
+    margin: 0.4rem auto;
+  }
+
+  #modal_enquiry .brochure-zoho-frame iframe {
+    height: 780px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  #modal_enquiry .brochure-zoho-frame iframe {
+    height: 820px !important;
+  }
+}
+
