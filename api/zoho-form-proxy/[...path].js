@@ -1,4 +1,4 @@
-import { proxyToZoho } from "../../../lib/zoho-brochure.js";
+import { proxyToZoho, zohoPath } from "../../lib/zoho-brochure.js";
 
 export const config = { api: { bodyParser: false } };
 
@@ -9,9 +9,25 @@ async function readBody(req) {
   return chunks.length ? Buffer.concat(chunks) : undefined;
 }
 
-export default async function handler(req, res) {
+function resolvePath(req) {
+  const url = new URL(req.url || "/", `https://${req.headers.host || "localhost"}`);
+  const fromUrl = zohoPath(url.pathname);
+  if (fromUrl) return fromUrl;
+
   const segments = [].concat(req.query.path || []).filter(Boolean);
-  const path = "/" + segments.join("/");
+  const joined = "/" + segments.map((part) => decodeURIComponent(String(part))).join("/");
+  const fromQuery = zohoPath(joined);
+  if (fromQuery) return fromQuery;
+  if (segments.length && !joined.includes("..")) {
+    const prefixed = joined.startsWith("/axiobio41/") ? joined : `/axiobio41${joined}`;
+    const found = zohoPath(prefixed);
+    if (found) return found;
+  }
+  return url.pathname;
+}
+
+export default async function handler(req, res) {
+  const path = resolvePath(req);
   const url = new URL(req.url, `https://${req.headers.host || "localhost"}`);
   const result = await proxyToZoho({
     method: req.method,

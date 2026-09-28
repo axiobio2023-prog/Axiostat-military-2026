@@ -1,3 +1,6 @@
+/request-brochure   /.netlify/functions/brochure-form   200!
+/request-brochure/  /.netlify/functions/brochure-form   200!
+/axiobio41/*        /.netlify/functions/zoho-form-proxy 200!
 /blog/* /blog/index.html    200
 /blog  /blogs   301!
 /story  /our-story  301!
