@@ -79,7 +79,7 @@
     />
     <link
       rel="stylesheet"
-      href="assets/css/myStyles-minify.css?v=brochure-form2"
+      href="assets/css/myStyles-minify.css?v=classic-pack3"
       type="text/css"
     />
     <!-- animate css -->
@@ -824,17 +824,62 @@
           Z-Fold
         </h1>
         <div class="hero-product-stack">
-          <img
-            src="assets/graphics/home_carousel/Axiostat-z-fold-300-new-pack.webp"
-            class="img_product animate__zoomIn animate__animated mt-2"
-            alt="Axiostat hemostatic gauze products for military bleeding control"
-            fetchpriority="high"
-            decoding="async"
-          />
-          <p class="hero_tagline fst-italic mb-3 position-relative">
-            Bleeding Control Solutions, Combat Proven Technology
-          </p>
+          <div class="hero-product-figure">
+            <span class="hero-new-tag">New<br />Packaging*</span>
+            <img
+              src="assets/graphics/home_carousel/Axiostat-z-fold-300-new-pack.webp"
+              class="img_product animate__zoomIn animate__animated"
+              alt="Axiostat Z-Fold MIL300 hemostatic gauze in the new packaging"
+              width="1066"
+              height="726"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <p class="hero-pack-disclaimer">
+              *Available for <strong>MIL300</strong> only
+            </p>
+          </div>
         </div>
+
+        <button
+          type="button"
+          class="hero-classic-card"
+          data-bs-toggle="modal"
+          data-bs-target="#classicPackModal"
+          aria-haspopup="dialog"
+        >
+          <span class="hero-classic-card__thumb">
+            <img
+              src="assets/graphics/home_carousel/classic-pack-thumb.webp"
+              alt=""
+              width="160"
+              height="192"
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
+          <span class="hero-classic-card__body">
+            <span class="hero-classic-card__title">Prefer the classic pack?</span>
+            <span class="hero-classic-card__text"
+              >Still available. <strong>MIL300</strong> and
+              <strong>MIL150</strong>.</span
+            >
+            <svg
+              class="hero-classic-card__chevron"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                d="M9 5l7 7-7 7"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        </button>
 
         <!-- <div class="hero-variants-bar">
           <span class="hero-variants-bar__label">Variants</span>
@@ -2348,6 +2393,55 @@
               });
             }
             </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade classic-pack-modal"
+      id="classicPackModal"
+      tabindex="-1"
+      aria-labelledby="classicPackModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <div>
+              <h5 class="modal-title" id="classicPackModalLabel">
+                Classic Packaging
+              </h5>
+              <p class="classic-pack-modal__sub">
+                Same Axiostat Z-Fold gauze, original pack. Still available.
+              </p>
+            </div>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="classic-pack-modal__grid">
+              <figure class="classic-pack-modal__item">
+                <div class="classic-pack-modal__img">
+                  <img
+                    src="assets/graphics/home_carousel/z-fold_nsn.webp"
+                    alt="Axiostat MIL300 Z-Fold gauze in the classic packaging"
+                    width="1010"
+                    height="1206"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption>
+                  <strong>MIL300</strong> (7.6 x 300cm)
+                  <span>NSN 6510-72-057-0460</span>
+                </figcaption>
+              </figure>
+            </div>
           </div>
         </div>
       </div>
