@@ -341,6 +341,7 @@
         ]
       }
     </script>
+    <link rel="stylesheet" href="/assets/css/video-grid.css?v=1" />
   </head>
 
   <body>
@@ -1011,10 +1012,53 @@
             class="w-100 pattern1 d-none d-md-block"
             alt="Haemostatic dressing"
           />
-          <video width="100%" controls class="" autoplay muted>
-            <source src="/assets/graphics/video4.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <div class="axio-video-grid">
+            <article class="axio-video-card">
+              <div class="axio-video-card__media">
+                <button
+                  type="button"
+                  class="axio-video-card__trigger"
+                  data-video-src="/assets/graphics/video4.mp4"
+                  data-video-title="Axiostat Product Video"
+                  aria-label="Play video: Product Video"
+                >
+                  <img src="/assets/graphics/video4-poster.webp" alt="" width="1280" height="720" loading="lazy" decoding="async" />
+                  <span class="axio-video-card__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+                </button>
+              </div>
+              <h3 class="axio-video-card__title">Product Video</h3>
+            </article>
+            <article class="axio-video-card">
+              <div class="axio-video-card__media">
+                <button
+                  type="button"
+                  class="axio-video-card__trigger"
+                  data-youtube-id="zhDIpLvF6cU"
+                  data-video-title="Axiostat Mechanism of Action"
+                  aria-label="Play video: Mechanism of Action"
+                >
+                  <img src="https://i.ytimg.com/vi/zhDIpLvF6cU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" />
+                  <span class="axio-video-card__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+                </button>
+              </div>
+              <h3 class="axio-video-card__title">Mechanism of Action</h3>
+            </article>
+            <article class="axio-video-card">
+              <div class="axio-video-card__media">
+                <button
+                  type="button"
+                  class="axio-video-card__trigger"
+                  data-youtube-id="GfKZd1CSvRI"
+                  data-video-title="Axiostat Testimonials"
+                  aria-label="Play video: Testimonials"
+                >
+                  <img src="https://i.ytimg.com/vi/GfKZd1CSvRI/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" />
+                  <span class="axio-video-card__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+                </button>
+              </div>
+              <h3 class="axio-video-card__title">Testimonials</h3>
+            </article>
+          </div>
           <!-- <img src="/assets/graphics/pattern5.svg" class="w-100 pattern2"> -->
         </div>
       </section>
@@ -2827,5 +2871,6 @@
         });
       });
     </script>
+    <script src="/assets/js/video-grid.js?v=1" defer></script>
   </body>
 </html>
