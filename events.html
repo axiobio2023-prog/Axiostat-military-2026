@@ -134,6 +134,118 @@
       }
     </script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <style>
+      .events .event-card-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+      }
+      .events .event-card {
+        flex: 0 1 calc((100% - 4rem) / 3);
+        max-width: calc((100% - 4rem) / 3);
+        display: flex;
+        flex-direction: column;
+        padding: 1.25rem;
+        background: #fff;
+        border: 1px solid rgba(173, 143, 108, 0.35);
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(17, 17, 17, 0.08);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .events .event-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 36px rgba(17, 17, 17, 0.14);
+      }
+      .events .event-card__media {
+        aspect-ratio: 16 / 10;
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--dark_1);
+      }
+      .events .event-card__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .events .event-card__body {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        padding-top: 1.25rem;
+      }
+      .events .event-card__title {
+        margin: 0 0 0.85rem;
+        color: var(--dark_0);
+        font-size: 1.2rem;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+      .events .event-card__meta {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.55rem;
+        margin: 0 0 0.4rem;
+        color: var(--dark_2);
+        font-size: 0.98rem;
+        line-height: 1.4;
+      }
+      .events .event-card__icon {
+        flex: 0 0 auto;
+        width: 18px;
+        height: 18px;
+        margin-top: 0.1rem;
+        color: var(--brown_0);
+      }
+      .events .event-card__icon svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .events .event-card__btn {
+        align-self: flex-start;
+        margin-top: auto;
+        padding: 0.65rem 2.4rem;
+        border: 1.5px solid var(--brown_0);
+        border-radius: 999px;
+        background: rgba(173, 143, 108, 0.1);
+        color: var(--dark_0);
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+      .events .event-card__body .event-card__meta:last-of-type {
+        margin-bottom: 1.25rem;
+      }
+      .events .event-card__btn:hover,
+      .events .event-card__btn:focus-visible {
+        background: var(--brown_0);
+        color: #fff;
+      }
+      @media (max-width: 991px) {
+        .events .event-card {
+          flex-basis: calc((100% - 2rem) / 2);
+          max-width: calc((100% - 2rem) / 2);
+        }
+      }
+      @media (max-width: 575px) {
+        .events .event-card-grid {
+          gap: 1.25rem;
+        }
+        .events .event-card {
+          flex-basis: 100%;
+          max-width: 100%;
+        }
+        .events .event-card {
+          padding: 1rem;
+        }
+        .events .event-card__btn {
+          align-self: stretch;
+          text-align: center;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -608,9 +720,18 @@
 
       <section class="section2 section2-head">
         <div class="container text-center">
-          <p class="mb-4 events-announcement">
+          <p class="mb-4 events-announcement" id="eventsAnnouncement" hidden>
             Upcoming events will be announced soon
           </p>
+          <noscript>
+            <p class="mb-4 events-announcement">
+              Upcoming events will be announced soon
+            </p>
+          </noscript>
+        </div>
+
+        <div class="container" id="upcomingEvents" hidden>
+          <div class="event-card-grid" id="upcomingEventsGrid"></div>
         </div>
 
         <!-- Static upcoming events (uncomment to restore)
@@ -1136,165 +1257,142 @@
       referrerpolicy="no-referrer"
     ></script>
 
-    <!-- Sanity events fetch: remove the block comment below to restore dynamic event listing -->
+    <!-- Upcoming events: pulled from Sanity (_type "event"), only events that have not ended -->
     <script>
-      /*
-      const projectId = 'qt1vz71d'
-      const dataset = 'production'
+      (function () {
+        var projectId = "qt1vz71d";
+        var dataset = "production";
+        var query = encodeURIComponent(
+          '*[_type=="event" && dateTime(enddate) > dateTime(now())]|order(startdate asc){title, link, location, startdate, enddate, mainImage}',
+        );
+        var url =
+          "https://" + projectId + ".api.sanity.io/v1/data/query/" + dataset + "?query=" + query;
+        var TZ = "Asia/Kolkata"; // timezone the events are entered in Sanity Studio
 
-      const cdn = `https://cdn.sanity.io/images/${projectId}/${dataset}/`
-      const allEvents = `https://${projectId}.api.sanity.io/v1/data/query/${dataset}?query=*[_type=='event']|order(startdate desc)`
+        var ICON_CAL =
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+        var ICON_PIN =
+          '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
 
-      async function fetchAllEvents() {
-        try {
-          const response = await fetch(allEvents)
-          const data = await response.json()
-          return data
-        } catch (error) {
-          console.error(error)
+        function imageUrl(ref) {
+          // image-<id>-<WxH>-<format>
+          var parts = (ref || "").split("-");
+          if (parts.length < 4) return "";
+          return (
+            "https://cdn.sanity.io/images/" + projectId + "/" + dataset + "/" +
+            parts[1] + "-" + parts[2] + "." + parts[3] + "?w=800&auto=format"
+          );
         }
-      }
 
-      let upcomming = []
+        function dateParts(iso) {
+          var d = new Date(iso);
+          var get = function (opt) {
+            return new Intl.DateTimeFormat("en-GB", Object.assign({ timeZone: TZ }, opt)).format(d);
+          };
+          return {
+            day: parseInt(get({ day: "numeric" }), 10),
+            month: get({ month: "long" }),
+            year: get({ year: "numeric" }),
+          };
+        }
 
-      async function arrangeEvents() {
-        const events = await fetchAllEvents()
-        if (events.result.length != 0) {
-          let h2 = document.createElement('h2')
-          h2.setAttribute('class', 'color1 title mb-4 text-uppercase b_700 fst-italic')
-          h2.appendChild(document.createTextNode('Calendar of Events'))
+        function ordinal(n) {
+          var s = ["th", "st", "nd", "rd"], v = n % 100;
+          return n + (s[(v - 20) % 10] || s[v] || s[0]);
+        }
 
-          let row = document.createElement('div')
-          row.setAttribute('class', 'row')
+        function formatRange(start, end) {
+          var a = dateParts(start || end);
+          var b = dateParts(end || start);
+          if (a.year !== b.year)
+            return ordinal(a.day) + " " + a.month + " " + a.year + " – " + ordinal(b.day) + " " + b.month + " " + b.year;
+          if (a.month !== b.month)
+            return ordinal(a.day) + " " + a.month + " – " + ordinal(b.day) + " " + b.month + " " + b.year;
+          if (a.day === b.day) return ordinal(a.day) + ", " + a.month + " " + a.year;
+          return ordinal(a.day) + " – " + ordinal(b.day) + ", " + a.month + " " + a.year;
+        }
 
-          events.result.forEach((element) => {
-            const endDate = new Date(element.enddate)
-            const currentDate = new Date()
-            if (currentDate < endDate) {
-              upcomming.push(element)
-            }
+        function safeLink(href) {
+          return /^https?:\/\//i.test(href || "") ? href : "";
+        }
 
-            let img = document.createElement('img')
-            img.setAttribute('class', 'w-100 mb-3')
-            let image_name = element.mainImage.asset._ref.split('-')
-            img_link = `${cdn}${image_name[1]}-${image_name[2]}.${image_name[3]}`
-            img.setAttribute('src', img_link)
+        function el(tag, cls, text) {
+          var n = document.createElement(tag);
+          if (cls) n.className = cls;
+          if (text) n.textContent = text;
+          return n;
+        }
 
-            let dateButton = document.createElement('button')
-            dateButton.setAttribute('class', 'date btn_secondary')
-            dateButton.appendChild(document.createTextNode(`${endDate.getDate()}-${endDate.getMonth() + 1}-${endDate.getFullYear()}`))
+        function metaRow(iconSvg, text) {
+          var row = el("p", "event-card__meta");
+          var icon = el("span", "event-card__icon");
+          icon.innerHTML = iconSvg;
+          row.appendChild(icon);
+          row.appendChild(el("span", "", text));
+          return row;
+        }
 
-            let title = document.createElement('h5')
-            title.setAttribute('class', 'title')
-            title.appendChild(document.createTextNode(element.title))
+        function buildCard(ev) {
+          var title = (ev.title || "").trim();
+          var card = el("article", "event-card");
 
-            let datedescription = document.createElement('p')
-            datedescription.setAttribute('class', 'desc')
-            datedescription.appendChild(document.createTextNode(element.datedescription))
-
-            let location = document.createElement('p')
-            location.setAttribute('class', 'desc')
-            location.appendChild(document.createTextNode(element.location))
-
-            let link = document.createElement('a')
-            link.setAttribute('href', element.link)
-            link.setAttribute('target', '_blank')
-            let know_more = document.createElement('button')
-            know_more.setAttribute('class', 'btn_secondary')
-            know_more.appendChild(document.createTextNode('Know More'))
-            link.appendChild(know_more)
-
-            let event_wrap = document.createElement('div')
-            event_wrap.setAttribute('class', 'event_wrap')
-            event_wrap.appendChild(img)
-            event_wrap.appendChild(dateButton)
-            event_wrap.appendChild(title)
-            event_wrap.appendChild(datedescription)
-            event_wrap.appendChild(location)
-            event_wrap.appendChild(link)
-
-            let col = document.createElement('div')
-            col.setAttribute('class', 'col-md-4 mb-3')
-            col.appendChild(event_wrap)
-
-            row.appendChild(col)
-          })
-          let upcommingEvent = document.getElementById('events')
-          upcommingEvent.appendChild(h2)
-          upcommingEvent.appendChild(row)
-
-          if (upcomming.length != 0) {
-            let h2 = document.createElement('h2')
-            h2.setAttribute('class', 'color1 title mb-4 text-uppercase b_700 fst-italic')
-            h2.appendChild(document.createTextNode('Upcoming Events'))
-
-            let row = document.createElement('div')
-            row.setAttribute('class', 'row')
-
-            upcomming.forEach((element) => {
-              let img = document.createElement('img')
-              img.setAttribute('class', 'w-100 mb-3')
-              let image_name = element.mainImage.asset._ref.split('-')
-              img_link = `${cdn}${image_name[1]}-${image_name[2]}.${image_name[3]}`
-              img.setAttribute('src', img_link)
-
-              let dateButton = document.createElement('button')
-              dateButton.setAttribute('class', 'date btn_secondary')
-              const endDate = new Date(element.enddate)
-              dateButton.appendChild(document.createTextNode(`${endDate.getDate()}-${endDate.getMonth() + 1}-${endDate.getFullYear()}`))
-
-              let title = document.createElement('h5')
-              title.setAttribute('class', 'title')
-              title.appendChild(document.createTextNode(element.title))
-
-              let datedescription = document.createElement('p')
-              datedescription.setAttribute('class', 'desc')
-              datedescription.appendChild(document.createTextNode(element.datedescription))
-
-              let location = document.createElement('p')
-              location.setAttribute('class', 'desc')
-              location.appendChild(document.createTextNode(element.location))
-
-              let link = document.createElement('a')
-              link.setAttribute('href', element.link)
-              link.setAttribute('target', '_blank')
-              let know_more = document.createElement('button')
-              know_more.setAttribute('class', 'btn_secondary')
-              know_more.appendChild(document.createTextNode('Know More'))
-              link.appendChild(know_more)
-
-              let event_wrap = document.createElement('div')
-              event_wrap.setAttribute('class', 'event_wrap')
-              event_wrap.appendChild(img)
-              event_wrap.appendChild(dateButton)
-              event_wrap.appendChild(title)
-              event_wrap.appendChild(datedescription)
-              event_wrap.appendChild(location)
-              event_wrap.appendChild(link)
-
-              let col = document.createElement('div')
-              col.setAttribute('class', 'col-md-4')
-              col.appendChild(event_wrap)
-
-              row.appendChild(col)
-            })
-
-            let upcommingEvent = document.getElementById('upcomming')
-            upcommingEvent.appendChild(h2)
-            upcommingEvent.appendChild(row)
+          var src = ev.mainImage && ev.mainImage.asset ? imageUrl(ev.mainImage.asset._ref) : "";
+          if (src) {
+            var media = el("div", "event-card__media");
+            var img = document.createElement("img");
+            img.src = src;
+            img.alt = title + " event banner";
+            img.loading = "lazy";
+            img.decoding = "async";
+            media.appendChild(img);
+            card.appendChild(media);
           }
-        } else {
-          let message = document.createElement('p')
-          message.setAttribute('class', 'text-center')
-          message.setAttribute('style', 'margin-bottom: -24px')
-          message.append(document.createTextNode('No Upcoming Events'))
-          let eventContainer = document.getElementById('upcomming')
-          eventContainer.appendChild(message)
-        }
-      }
 
-      arrangeEvents()
-      */
+          var body = el("div", "event-card__body");
+          body.appendChild(el("h3", "event-card__title", title));
+          if (ev.startdate || ev.enddate)
+            body.appendChild(metaRow(ICON_CAL, formatRange(ev.startdate, ev.enddate)));
+          if (ev.location) body.appendChild(metaRow(ICON_PIN, ev.location.trim()));
+
+          var href = safeLink(ev.link);
+          if (href) {
+            var a = el("a", "event-card__btn", "Know More");
+            a.href = href;
+            a.target = "_blank";
+            a.rel = "noopener";
+            a.setAttribute("aria-label", "Know more about " + title);
+            body.appendChild(a);
+          }
+          card.appendChild(body);
+          return card;
+        }
+
+        function showAnnouncement() {
+          document.getElementById("eventsAnnouncement").hidden = false;
+        }
+
+        fetch(url)
+          .then(function (r) {
+            if (!r.ok) throw new Error("Sanity " + r.status);
+            return r.json();
+          })
+          .then(function (data) {
+            var events = (data && data.result) || [];
+            if (!events.length) {
+              showAnnouncement();
+              return;
+            }
+            var grid = document.getElementById("upcomingEventsGrid");
+            events.forEach(function (ev) {
+              grid.appendChild(buildCard(ev));
+            });
+            document.getElementById("upcomingEvents").hidden = false;
+          })
+          .catch(function (err) {
+            console.error("Could not load events", err);
+            showAnnouncement();
+          });
+      })();
     </script>
 
     <script>

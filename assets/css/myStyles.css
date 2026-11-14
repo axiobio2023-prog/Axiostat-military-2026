@@ -1386,16 +1386,16 @@ white-space: nowrap;
 }
 
 .classic-pack-modal .modal-dialog {
-  max-width: 440px;
+  max-width: 560px;
 }
 
 @media only screen and (min-width: 992px) {
   .classic-pack-modal .modal-dialog {
-    max-width: 720px;
+    max-width: 820px;
   }
 
   .classic-pack-modal__img img {
-    max-height: 520px !important;
+    max-height: 440px !important;
   }
 }
 
@@ -1433,7 +1433,7 @@ white-space: nowrap;
 
 .classic-pack-modal__grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
@@ -1537,3 +1537,4 @@ white-space: nowrap;
     font-size: 0.75rem;
   }
 }
+

@@ -79,7 +79,7 @@
     />
     <link
       rel="stylesheet"
-      href="assets/css/myStyles-minify.css?v=classic-pack3"
+      href="assets/css/myStyles-minify.css?v=videogrid1"
       type="text/css"
     />
     <!-- animate css -->
@@ -344,6 +344,7 @@
         ]
       }
     </script>
+    <link rel="stylesheet" href="/assets/css/video-grid.css?v=1" />
   </head>
 
   <body>
@@ -1078,34 +1079,52 @@
             class="w-100 pattern1 d-none d-md-block"
             alt="Haemostatic dressing"
           />
-          <div class="home-section-youtube">
-            <div class="home-section-youtube__frame ratio ratio-16x9">
-              <iframe
-                id="homeSectionYoutube"
-                title="Axiostat Military video"
-                src="https://www.youtube.com/embed/yMHTbsmlE9E?autoplay=1&mute=1&enablejsapi=1&rel=0&modestbranding=1&playsinline=1&loop=1&playlist=yMHTbsmlE9E"
-                allow="
-                  accelerometer;
-                  autoplay;
-                  clipboard-write;
-                  encrypted-media;
-                  gyroscope;
-                  picture-in-picture;
-                  web-share;
-                "
-                allowfullscreen
-              ></iframe>
-            </div>
-            <button
-              type="button"
-              class="home-section-youtube__toggle btn_secondary"
-              id="homeSectionYoutubeToggle"
-              aria-label="Pause video"
-              aria-pressed="true"
-            >
-              <i class="fa-solid fa-pause" aria-hidden="true"></i>
-              <span>Pause</span>
-            </button>
+          <div class="axio-video-grid">
+            <article class="axio-video-card">
+              <div class="axio-video-card__media">
+                <button
+                  type="button"
+                  class="axio-video-card__trigger"
+                  data-youtube-id="yMHTbsmlE9E"
+                  data-video-title="Axiostat Product Video"
+                  aria-label="Play video: Product Video"
+                >
+                  <img src="https://i.ytimg.com/vi/yMHTbsmlE9E/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" />
+                  <span class="axio-video-card__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+                </button>
+              </div>
+              <h3 class="axio-video-card__title">Product Video</h3>
+            </article>
+            <article class="axio-video-card">
+              <div class="axio-video-card__media">
+                <button
+                  type="button"
+                  class="axio-video-card__trigger"
+                  data-youtube-id="zhDIpLvF6cU"
+                  data-video-title="Axiostat Mechanism of Action"
+                  aria-label="Play video: Mechanism of Action"
+                >
+                  <img src="https://i.ytimg.com/vi/zhDIpLvF6cU/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" />
+                  <span class="axio-video-card__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+                </button>
+              </div>
+              <h3 class="axio-video-card__title">Mechanism of Action</h3>
+            </article>
+            <article class="axio-video-card">
+              <div class="axio-video-card__media">
+                <button
+                  type="button"
+                  class="axio-video-card__trigger"
+                  data-youtube-id="GfKZd1CSvRI"
+                  data-video-title="Axiostat Testimonials"
+                  aria-label="Play video: Testimonials"
+                >
+                  <img src="https://i.ytimg.com/vi/GfKZd1CSvRI/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" />
+                  <span class="axio-video-card__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></span>
+                </button>
+              </div>
+              <h3 class="axio-video-card__title">Testimonials</h3>
+            </article>
           </div>
           <!-- <img src="assets/graphics/pattern5.svg" class="w-100 pattern2"> -->
         </div>
@@ -2441,6 +2460,22 @@
                   <span>NSN 6510-72-057-0460</span>
                 </figcaption>
               </figure>
+              <figure class="classic-pack-modal__item">
+                <div class="classic-pack-modal__img">
+                  <img
+                    src="assets/graphics/home_carousel/classic-pack-mil150.webp?v=2"
+                    alt="Axiostat MIL150 Z-Fold gauze in the classic packaging"
+                    width="1010"
+                    height="1206"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption>
+                  <strong>MIL150</strong> (7.6 x 150cm)
+                  <span>NSN 6510-72-057-2313</span>
+                </figcaption>
+              </figure>
             </div>
           </div>
         </div>
@@ -2880,49 +2915,6 @@
     </script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var iframe = document.getElementById("homeSectionYoutube");
-        var toggleBtn = document.getElementById("homeSectionYoutubeToggle");
-        if (!iframe || !toggleBtn) return;
-
-        var isPlaying = true;
-        var icon = toggleBtn.querySelector("i");
-        var label = toggleBtn.querySelector("span");
-
-        function postYoutubeCommand(func) {
-          iframe.contentWindow.postMessage(
-            JSON.stringify({ event: "command", func: func, args: "" }),
-            "*",
-          );
-        }
-
-        toggleBtn.addEventListener("click", function () {
-          if (isPlaying) {
-            postYoutubeCommand("pauseVideo");
-            isPlaying = false;
-            toggleBtn.setAttribute("aria-label", "Play video");
-            toggleBtn.setAttribute("aria-pressed", "false");
-            if (icon) {
-              icon.classList.remove("fa-pause");
-              icon.classList.add("fa-play");
-            }
-            if (label) label.textContent = "Play";
-          } else {
-            postYoutubeCommand("playVideo");
-            isPlaying = true;
-            toggleBtn.setAttribute("aria-label", "Pause video");
-            toggleBtn.setAttribute("aria-pressed", "true");
-            if (icon) {
-              icon.classList.remove("fa-play");
-              icon.classList.add("fa-pause");
-            }
-            if (label) label.textContent = "Pause";
-          }
-        });
-      });
-    </script>
-
-    <script>
       $(document).ready(function () {
         var x = document.getElementById("toast");
         x.className = "show";
@@ -3103,5 +3095,6 @@
           });
       });
     </script>
+    <script src="/assets/js/video-grid.js?v=1" defer></script>
   </body>
 </html>

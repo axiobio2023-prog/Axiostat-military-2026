@@ -89,7 +89,8 @@ They all define:
 |----------------|------------------|------------------------------|
 | **`post`** | **`build.mjs`**, **`blogs.html`** / **`blogs.template.html`** (listing fetch JS may remain but listing is also **pre-rendered** in `blogs.html` after build) | `*[_type=='post'] \| order(publishedAt desc)` |
 | **`post`** (single) | **`blog/index.html`** (template), **`blog-details.html`** | Match slug: `*[slug.current=='…']` |
-| **`event`** | **`events.html`**, **`publications.html`** | `*[_type=='event'] \| order(startdate desc)` |
+| **`event`** (upcoming only) | **`events.html`** — rendered as cards; shows "announced soon" when none | `_type == "event" && dateTime(enddate) > dateTime(now())`, ordered by `startdate asc` |
+| **`event`** | **`publications.html`** | `*[_type=='event'] \| order(startdate desc)` |
 | **`event`** (upcoming only) | **`our-story.html`**, **`story.html`**, **`story_backup.html`** | `_type == "event"` and `dateTime(enddate) > dateTime(now())`, ordered by `startdate desc` (query is URL-encoded in the HTML) |
 | **`news`** | **`news.html`** | `*[_type=='news'] \| order(date desc)` |
 | **`gallery`** | **`gallery.html`** | `*[_type=='gallery'] \| order(_createdAt desc)` |

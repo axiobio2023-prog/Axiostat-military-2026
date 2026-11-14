@@ -1,0 +1,184 @@
+/* Product video grid: 3 cards (product video, mechanism of action, testimonial).
+   Used on the homepage and every product page except Trainer Pack.
+   Markup: see any product page, search for "axio-video-grid". Behaviour: /assets/js/video-grid.js */
+
+.axio-video-grid {
+  --avg-dark: #1b1b1b;
+  --avg-tan: #ad8f6c;
+  --avg-tan-light: #e7daca;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+.axio-video-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: var(--avg-dark);
+  border: 1px solid rgba(173, 143, 108, 0.28);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(17, 17, 17, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.axio-video-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--avg-tan);
+  box-shadow: 0 18px 38px rgba(17, 17, 17, 0.28);
+}
+
+.axio-video-card__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.axio-video-card__media iframe,
+.axio-video-card__media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+.axio-video-card__trigger {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.axio-video-card__trigger img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease, filter 0.3s ease;
+  filter: brightness(0.82);
+}
+
+.axio-video-card__trigger::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+  pointer-events: none;
+}
+
+.axio-video-card:hover .axio-video-card__trigger img {
+  transform: scale(1.04);
+  filter: brightness(0.92);
+}
+
+.axio-video-card__play {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var(--avg-tan);
+  box-shadow: 0 0 0 7px rgba(231, 218, 202, 0.35),
+    0 10px 24px rgba(0, 0, 0, 0.45);
+  color: #fff;
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.axio-video-card__play svg {
+  width: 26px;
+  height: 26px;
+  margin-left: 4px;
+}
+
+.axio-video-card:hover .axio-video-card__play {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 0 0 10px rgba(231, 218, 202, 0.4),
+    0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+.axio-video-card__trigger:focus-visible {
+  outline: 3px solid var(--avg-tan);
+  outline-offset: -3px;
+}
+
+.axio-video-card__title {
+  margin: 0;
+  padding: 1.15rem 1.5rem 1.3rem;
+  border-top: 2px solid var(--avg-tan);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  transition: color 0.2s ease;
+}
+
+.axio-video-card:hover .axio-video-card__title {
+  color: var(--avg-tan-light);
+}
+
+@media only screen and (max-width: 991px) {
+  .axio-video-grid {
+    gap: 1rem;
+  }
+
+  .axio-video-card__play {
+    width: 58px;
+    height: 58px;
+    box-shadow: 0 0 0 5px rgba(231, 218, 202, 0.35),
+      0 8px 18px rgba(0, 0, 0, 0.45);
+  }
+
+  .axio-video-card__play svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .axio-video-card__title {
+    padding: 0.9rem 1.1rem 1rem;
+    font-size: 1.05rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .axio-video-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .axio-video-card__title {
+    font-size: 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .axio-video-card,
+  .axio-video-card__trigger img,
+  .axio-video-card__play {
+    transition: none;
+  }
+}
